@@ -33,7 +33,7 @@ def get_recommendations(movie_title):
     
     idx = idx[0]
     similarity_scores = cosine_similarity(cv[idx], cv).flatten()
-    similar_movie_indices = similarity_scores.argsort()[-7:-1][::-1]
+    similar_movie_indices = similarity_scores.argsort()[-10:-1][::-1]
     return filtered_df['title'].iloc[similar_movie_indices].tolist()
 
 def show_movie_info(title, movie_id):
@@ -52,7 +52,7 @@ def show_movie_info(title, movie_id):
     st.write("---")
 
 def get_random_popular_movies(n=7):
-    top_movies = filtered_df.nlargest(50, 'popularity')
+    top_movies = filtered_df.nlargest(28, 'popularity')
     random_popular = top_movies.sample(n=n)
     return random_popular
 
